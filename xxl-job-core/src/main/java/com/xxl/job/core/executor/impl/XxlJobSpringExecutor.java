@@ -5,7 +5,7 @@ import com.xxl.job.core.executor.XxlJobExecutor;
 import com.xxl.job.core.glue.GlueFactory;
 import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
-import com.xxl.job.core.handler.annotation.XxlJob;
+import com.xxl.job.core.handler.annotation.TaskJob;
 import com.xxl.job.core.handler.impl.MethodJobHandler;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.DisposableBean;
@@ -82,7 +82,7 @@ public class XxlJobSpringExecutor extends XxlJobExecutor implements ApplicationC
             Object bean = applicationContext.getBean(beanDefinitionName);
             Method[] methods = bean.getClass().getDeclaredMethods();
             for (Method method: methods) {
-                XxlJob xxlJob = AnnotationUtils.findAnnotation(method, XxlJob.class);
+                TaskJob xxlJob = AnnotationUtils.findAnnotation(method, TaskJob.class);
                 if (xxlJob != null) {
 
                     // name
